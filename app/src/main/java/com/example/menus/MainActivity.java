@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,24 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
+        return handleClick(item.getItemId());
+    }
+
+    public void showPopUpMenu(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main_toolbar_menu, popupMenu.getMenu());
+        popupMenu.show();
+        popupMenu.setOnMenuItemClickListener(this);
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        return handleClick(item.getItemId());
+    }
+
+    public boolean handleClick(int itemId) {
+        switch (itemId) {
             case R.id.menu_1:
                 Toast.makeText(this, "Menu 1 clicked", Toast.LENGTH_SHORT).show();
                 return true;
@@ -39,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_3:
                 Toast.makeText(this, "Menu 3 clicked", Toast.LENGTH_SHORT).show();
                 return true;
+            default:
+                return false;
         }
-        return super.onOptionsItemSelected(item);
     }
 }
