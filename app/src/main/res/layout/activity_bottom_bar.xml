@@ -6,22 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".BottomBarActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_showAlertDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Alert Dialog" />
+
+        <Button
+            android:id="@+id/btn_showAlertOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Alert Option" />
+
+    </LinearLayout>
+
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:fabAlignmentMode="end"
         android:backgroundTint="@color/colorPrimary"
+        app:fabAlignmentMode="end"
         app:menu="@menu/drawer_menu" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_anchor="@id/bottomAppBar"
         android:src="@drawable/icon_cart"
-        />
+        app:layout_anchor="@id/bottomAppBar" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
